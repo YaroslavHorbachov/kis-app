@@ -1,0 +1,51 @@
+<app-header title="Sign Up"></app-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-item lines="inset">
+      <ion-label color="primary" position="floating">
+        First Name
+      </ion-label>
+      <ion-input type="text" formControlName="firstName"> </ion-input>
+    </ion-item>
+
+    <ion-item lines="inset">
+      <ion-label color="primary" position="floating">
+        Last Name
+      </ion-label>
+      <ion-input type="text" formControlName="lastName"> </ion-input>
+    </ion-item>
+
+    <ion-item lines="inset">
+      <ion-label color="primary" position="floating">
+        Email
+      </ion-label>
+      <ion-input type="email" formControlName="emailAddress"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Gender</ion-label>
+      <ion-select color="primary" formControlName="sex">
+        <ion-select-option [value]="sexOptions.Male">Male</ion-select-option>
+        <ion-select-option [value]="sexOptions.Female">Female</ion-select-option>
+        <ion-select-option [value]="sexOptions.Other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="inset">
+      <ion-label color="primary" position="floating">
+        Password
+      </ion-label>
+      <ion-input type="password" formControlName="password"> </ion-input>
+    </ion-item>
+
+    <ion-item lines="inset">
+      <ion-label color="primary" position="floating">
+        Confirm Password
+      </ion-label>
+      <ion-input type="password" formControlName="confirmPassword"> </ion-input>
+    </ion-item>
+
+    <ion-button type="submit" expand="block" [disabled]="isFormInvalid">Create</ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,25 @@
+<app-header title="Sign In"></app-header>
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-item lines="inset">
+      <ion-label color="primary" position="floating">
+        Email
+      </ion-label>
+      <ion-input type="email" inputmode="email" formControlName="emailAddress"> </ion-input>
+    </ion-item>
+
+    <ion-item lines="inset">
+      <ion-label color="primary" position="floating">
+        Password
+      </ion-label>
+      <ion-input type="password" formControlName="password" autocomplete="current-password"> </ion-input>
+    </ion-item>
+
+    <ion-button class="ion-margin-bottom" color="primary" type="submit" expand="block" [disabled]="isFormInvalid">
+      Sign In
+    </ion-button>
+    <ion-button class="ion-margin-top" color="medium" type="button" expand="block" (click)="onSignUp()">
+      Sign Up
+    </ion-button>
+  </form>
+</ion-content>
