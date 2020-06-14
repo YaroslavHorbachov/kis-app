@@ -1,6 +1,9 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
-import { SignInActions, AuthActions } from '../actions';
+import { SignInActions } from 'src/app/sign-in/store/actions';
+import { AuthActions } from '../actions';
+
+export const featureKey = 'auth';
 
 export interface IState {
   token: string;

@@ -1,0 +1,21 @@
+<ion-item-group *ngFor="let option of options">
+  <ion-item>
+    <ion-label>Color</ion-label>
+
+    <div>
+      <ion-thumbnail class="product-color" [style.background-color]="option.color"> </ion-thumbnail>
+    </div>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Price</ion-label>
+    <ion-text>{{ option.price }} {{ option.currency }}</ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Count</ion-label>
+    <ion-text>{{ option.count }}</ion-text>
+  </ion-item>
+
+  <ion-item-divider *ngIf="isNonSingleItem"> </ion-item-divider>
+</ion-item-group>

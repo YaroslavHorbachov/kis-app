@@ -11,6 +11,8 @@ export class AuthFacade {
 
   public readonly token$ = this.store.select(AuthSelectors.selectToken);
 
+  public readonly requestToken$ = this.store.select(AuthSelectors.selectRequestToken);
+
   public readonly isSignIn$ = this.store.select(AuthSelectors.selectIsSignIn);
 
   public readonly id$ = this.store.select(AuthSelectors.selectId);

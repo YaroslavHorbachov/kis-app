@@ -12,16 +12,8 @@ const showAlertProps = props<{ status: number }>();
 const showAlert = createAction(SHOW_ALERT, showAlertProps);
 const hideAlert = createAction(HIDE_ALERT);
 
-const SHOW_LOADER = '[Core] Show Loader';
-const HIDE_LOADER = '[Core] Hide Loader';
-
-const showLoader = createAction(SHOW_LOADER);
-const hideLoader = createAction(HIDE_LOADER);
-
 export const CoreActions = {
   appInit,
   showAlert,
   hideAlert,
-  showLoader,
-  hideLoader,
 };

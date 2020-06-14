@@ -10,10 +10,6 @@ const routes: Routes = [
     redirectTo: 'home',
   },
   {
-    path: 'auth',
-    loadChildren: () => AuthModule,
-  },
-  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then((m) => m.HomePageModule),
     canActivate: [SingInGuard],
@@ -22,6 +18,18 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then((m) => m.ProfilePageModule),
     canActivate: [SingInGuard],
+  },
+  {
+    path: 'sign-in',
+    loadChildren: () => import('./sign-in/sign-in.module').then((m) => m.SignInPageModule),
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./sign-up/sign-up.module').then((m) => m.SignUpPageModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'sign-in',
   },
 ];
 

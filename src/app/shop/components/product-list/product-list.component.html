@@ -1,0 +1,7 @@
+<ion-list>
+  <ion-list-header class="ion-padding-start">
+    <ion-label color="primary">Products</ion-label>
+  </ion-list-header>
+
+  <app-product-item *ngFor="let product of products$ | async" [product]="product"></app-product-item>
+</ion-list>

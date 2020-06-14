@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { ProductsFacade } from './store/facades';
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.page.html',
   styleUrls: ['./shop.page.scss'],
 })
-export class ShopPage implements OnInit {
+export class ShopPage {
+  constructor(private readonly productsFacade: ProductsFacade) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  public ionViewWillEnter() {
+    this.productsFacade.load();
   }
-
 }

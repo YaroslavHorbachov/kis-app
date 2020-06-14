@@ -1,0 +1,29 @@
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
+}
+
+.status-box {
+  border-radius: 90px;
+  max-width: fit-content;
+}
+
+.productName {
+  font-weight: bold;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnail {
+  min-width: 128px;
+  min-height: 128px;
+}

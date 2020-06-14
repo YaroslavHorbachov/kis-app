@@ -30,4 +30,8 @@ export class RouteManager {
   public navigateToProfileSettings() {
     this.router.navigateByUrl(PROFILE_SETTINGS);
   }
+
+  public navigateToProductDetails(productId: string) {
+    this.router.navigate(['home/shop/products', productId, 'details']);
+  }
 }

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home/shop"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Product Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="productDetails$ | async as productDetails">
+  <app-gallery [imgGallery]="productDetails.imgGallery"></app-gallery>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-text>{{ productDetails.name }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Brand</ion-label>
+      <ion-text>{{ productDetails.brandName }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Status</ion-label>
+      <ion-text>{{ productDetails.status }}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-text>{{ productDetails.description }}</ion-text>
+    </ion-item>
+
+    <ion-item (click)="onToggleOptions()">
+      <ion-label>Options</ion-label>
+
+      <ion-icon [name]="optionsIconName" slot="end"></ion-icon>
+    </ion-item>
+
+    <app-options *ngIf="isOptionsShow" [options]="productDetails.options"></app-options>
+  </ion-list>
+</ion-content>

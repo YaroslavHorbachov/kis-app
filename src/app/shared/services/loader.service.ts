@@ -5,27 +5,19 @@ import { DEFAULT_LOADER_MESSAGE } from '../constants';
 
 @Injectable({ providedIn: 'root' })
 export class LoaderService {
-  constructor(private readonly loadingController: LoadingController) {
-    this.createLoader();
-  }
-
-  private loader: HTMLIonLoadingElement;
+  constructor(private readonly loadingController: LoadingController) {}
 
   public async showLoader(): Promise<void> {
-    await this.loader.present();
-  }
-
-  public async hideLoader(): Promise<void> {
-    const topLoader = await this.loadingController.getTop();
-
-    topLoader.dismiss();
-
-    this.createLoader();
-  }
-
-  private async createLoader() {
-    this.loader = await this.loadingController.create({
+    const loader = await this.loadingController.create({
       message: DEFAULT_LOADER_MESSAGE,
     });
+
+    return loader.present();
+  }
+
+  public async hideLoader(): Promise<boolean> {
+    const loader = await this.loadingController.getTop();
+
+    return loader.dismiss();
   }
 }

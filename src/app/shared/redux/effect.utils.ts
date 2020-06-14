@@ -1,9 +1,12 @@
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { ActionCreator } from '@ngrx/store/src/models';
-import { Observable } from 'rxjs';
-import { withLatestFrom, map } from 'rxjs/operators';
+import { ActionCreator, Action, TypedAction } from '@ngrx/store/src/models';
+import { Observable, of, MonoTypeOperatorFunction } from 'rxjs';
+import { withLatestFrom, map, catchError, switchMapTo, take } from 'rxjs/operators';
 
 import { CoreActions } from 'src/app/core/store/actions';
+import { ApiException } from '../services';
+import { LoaderActions } from '../store/actions';
+import { debug } from '../operators';
 
 export const createToggleLoaderEffect = (
   actionsStream: Actions,
@@ -13,10 +16,19 @@ export const createToggleLoaderEffect = (
   return createEffect(() =>
     actionsStream.pipe(
       ofType(...listedActions),
-      withLatestFrom(loaderStream),
-      map(([, isLoading]) => {
-        return isLoading ? CoreActions.showLoader() : CoreActions.hideLoader();
+      switchMapTo(loaderStream.pipe(take(1))),
+      debug(),
+      map((isLoading) => {
+        return isLoading ? LoaderActions.initPresentLoader() : LoaderActions.initDismissLoader();
       })
     )
+  );
+};
+
+export const createCatchApiException = (
+  errorAction: (props: { error: string }) => TypedAction<string>
+): MonoTypeOperatorFunction<Action> => {
+  return catchError(({ message, status }: ApiException) =>
+    of(errorAction({ error: message }), CoreActions.showAlert({ status }))
   );
 };

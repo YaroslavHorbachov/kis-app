@@ -11,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private readonly authService: AuthService, private readonly authFacade: AuthFacade) {}
 
   public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return this.authFacade.token$.pipe(
+    return this.authFacade.requestToken$.pipe(
       take(1),
       map((token) => {
         const headers = token ? request.headers.set('Authorization', token) : request.headers;

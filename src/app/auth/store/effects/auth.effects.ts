@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 
 import { RouteManager } from 'src/app/shared/services';
-import { SignInActions, AuthActions } from '../actions';
+import { AuthActions } from '../actions';
 import { AuthService } from '../../services';
+import { SignInActions } from 'src/app/sign-in/store/actions';
 
 @Injectable()
 export class AuthEffects {

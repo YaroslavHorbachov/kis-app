@@ -1,0 +1,25 @@
+<ion-item class="ion-activatable ripple-parent" (click)="onItemClick()" detail>
+  <div class="ion-padding">
+    <div class="ion-margin-bottom item">
+      <div class="ion-padding-end thumbnail">
+        <ion-img [src]="product.mainPictureUrl"></ion-img>
+      </div>
+
+      <div class="text-content">
+        <ion-text class="ion-padding-bottom">
+          <span class="productName">{{ product.name }}, </span>
+          <span>
+            {{ product.brandName }}
+          </span>
+        </ion-text>
+        <ion-text color="medium">{{ product.description }}</ion-text>
+      </div>
+    </div>
+
+    <div class="status-box ion-padding" [style.background-color]="product.statusColor">
+      {{ product.status }}
+    </div>
+  </div>
+
+  <ion-ripple-effect></ion-ripple-effect>
+</ion-item>

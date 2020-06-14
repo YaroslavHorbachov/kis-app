@@ -6,8 +6,12 @@ import { ShopPage } from './shop.page';
 const routes: Routes = [
   {
     path: '',
-    component: ShopPage
-  }
+    component: ShopPage,
+  },
+  {
+    path: 'products/:productId/details',
+    loadChildren: () => import('../product-details/product-details.module').then((m) => m.ProductDetailsPageModule),
+  },
 ];
 
 @NgModule({
